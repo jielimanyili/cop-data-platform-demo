@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: cop-data-platform
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
+
+server:
+  port: 8080
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  endpoint:
+    health:
+      show-details: always
+      probes:
+        enabled: true
+
+app:
+  streams:
+    application-id: ${STREAMS_APPLICATION_ID:cop-data-platform}
+  simulator:
+    enabled: ${SIMULATOR_ENABLED:true}
+    interval-ms: ${SIMULATOR_INTERVAL_MS:2000}
+  thresholds:
+    speed-kph: ${SPEED_THRESHOLD_KPH:100}
+    fuel-pct: ${FUEL_THRESHOLD_PCT:20}
+  window-size-seconds: ${WINDOW_SIZE_SECONDS:10}
+  grpc:
+    port: ${GRPC_PORT:6565}

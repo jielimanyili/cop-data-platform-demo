@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package cop.v1;
+
+option java_multiple_files = true;
+option java_package = "com.raft.cop.grpc";
+option java_outer_classname = "OperationalPictureProto";
+
+// The common operational picture: the latest per-asset aggregate served from the
+// Kafka Streams state store. Exposed over gRPC (this file) and REST (/api/picture).
+service OperationalPictureService {
+  // Point query for a single asset's latest aggregate.
+  rpc GetAsset(GetAssetRequest) returns (AssetSnapshot);
+
+  // Full picture: server-streams the latest aggregate for every known asset.
+  rpc GetPicture(GetPictureRequest) returns (stream AssetSnapshot);
+}
+
+message GetAssetRequest {
+  string asset_id = 1;
+}
+
+message GetPictureRequest {}
+
+message AssetSnapshot {
+  string asset_id = 1;
+  int64 window_start = 2;
+  int64 window_end = 3;
+  int64 event_count = 4;
+  double speed_sum = 5;
+  double speed_max = 6;
+  double speed_min = 7;
+  double fuel_min = 8;
+  double avg_speed = 9;
+  string unit = 10;
+  string callsign = 11;
+}

@@ -1,0 +1,25 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: kafka-setup
+  namespace: cop
+spec:
+  template:
+    spec:
+      restartPolicy: OnFailure
+      containers:
+        - name: kafka-setup
+          image: confluentinc/cp-kafka:7.5.0
+          command: ["/bin/bash", "-c"]
+          args:
+            - |
+              set -e
+              echo "Creating COP topics..."
+              kafka-topics --bootstrap-server kafka:9092 --create --if-not-exists --topic cop.raw-telemetry --partitions 3 --replication-factor 1
+              kafka-topics --bootstrap-server kafka:9092 --create --if-not-exists --topic cop.asset-reference --partitions 3 --replication-factor 1 --config cleanup.policy=compact
+              kafka-topics --bootstrap-server kafka:9092 --create --if-not-exists --topic cop.enriched-events --partitions 3 --replication-factor 1
+              kafka-topics --bootstrap-server kafka:9092 --create --if-not-exists --topic cop.asset-aggregates --partitions 3 --replication-factor 1
+              kafka-topics --bootstrap-server kafka:9092 --create --if-not-exists --topic cop.alerts --partitions 3 --replication-factor 1
+              kafka-topics --bootstrap-server kafka:9092 --create --if-not-exists --topic cop.risk-scores --partitions 3 --replication-factor 1
+              echo "=== topics ==="
+              kafka-topics --bootstrap-server kafka:9092 --list

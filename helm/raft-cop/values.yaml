@@ -1,0 +1,32 @@
+replicaCount: 1
+
+image:
+  repository: raft-cop-data-platform
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 8080
+
+probes:
+  http: true
+
+resources:
+  limits:
+    cpu: "1"
+    memory: 1Gi
+  requests:
+    cpu: 500m
+    memory: 512Mi
+
+# Runtime configuration injected as environment variables.
+env:
+  KAFKA_BOOTSTRAP_SERVERS: "kafka:9092"
+  STREAMS_APPLICATION_ID: "cop-data-platform"
+  SIMULATOR_ENABLED: "true"
+
+app:
+  speedThresholdKph: "100"
+  fuelThresholdPct: "20"
+  windowSizeSeconds: "10"

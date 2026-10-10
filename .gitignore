@@ -1,0 +1,10 @@
+target/
+build/
+data/
+*.class
+.idea/
+*.iml
+.DS_Store
+.env
+.env.*
+*.log
