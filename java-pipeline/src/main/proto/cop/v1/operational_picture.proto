@@ -3,7 +3,7 @@ syntax = "proto3";
 package cop.v1;
 
 option java_multiple_files = true;
-option java_package = "com.raft.cop.grpc";
+option java_package = "com.jieli.cop.grpc";
 option java_outer_classname = "OperationalPictureProto";
 
 // The common operational picture: the latest per-asset aggregate served from the

@@ -30,7 +30,7 @@ echo "==> Building benchmark harness"
 mvn -q -pl benchmark -am package -DskipTests
 
 echo "==> Running benchmark (records=${RECORDS}, rate=${RATE}, phase=${PHASE})"
-java -cp benchmark/target/benchmark-0.0.1-SNAPSHOT.jar com.raft.cop.bench.BenchmarkMain \
+java -cp benchmark/target/benchmark-0.0.1-SNAPSHOT.jar com.jieli.cop.bench.BenchmarkMain \
   --bootstrap-servers "${BOOTSTRAP}" \
   --records "${RECORDS}" \
   --rate "${RATE}" \

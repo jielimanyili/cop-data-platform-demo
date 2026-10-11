@@ -142,7 +142,7 @@ threshold (20%) to trigger alerts.
 ```bash
 mvn -pl kotlin-pipeline exec:java
 # or from the shaded jar:
-# java -cp kotlin-pipeline/target/kotlin-pipeline-0.0.1-SNAPSHOT.jar com.raft.cop.risk.RiskScoringAppKt
+# java -cp kotlin-pipeline/target/kotlin-pipeline-0.0.1-SNAPSHOT.jar com.jieli.cop.risk.RiskScoringAppKt
 ```
 
 ### 4. Observe
@@ -261,7 +261,7 @@ mvn -pl java-pipeline spring-boot:run
 # 2. Run the harness (produces at max rate, samples lag, prints a verdict)
 ./run-benchmark.sh --records 200000
 # or directly:
-java -cp benchmark/target/benchmark-0.0.1-SNAPSHOT.jar com.raft.cop.bench.BenchmarkMain \
+java -cp benchmark/target/benchmark-0.0.1-SNAPSHOT.jar com.jieli.cop.bench.BenchmarkMain \
   --records 200000 --phase both
 ```
 

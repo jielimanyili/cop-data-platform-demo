@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.raft</groupId>
+        <groupId>com.jieli</groupId>
         <artifactId>cop-data-platform</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
@@ -91,7 +91,7 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>3.3.0</version>
                 <configuration>
-                    <mainClass>com.raft.cop.risk.RiskScoringAppKt</mainClass>
+                    <mainClass>com.jieli.cop.risk.RiskScoringAppKt</mainClass>
                 </configuration>
             </plugin>
             <plugin>

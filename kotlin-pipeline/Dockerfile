@@ -10,4 +10,4 @@ RUN mvn -q -f kotlin-pipeline/pom.xml package -DskipTests
 FROM eclipse-temurin:17-jre
 WORKDIR /app
 COPY --from=build /app/kotlin-pipeline/target/kotlin-pipeline-*.jar app.jar
-ENTRYPOINT ["java", "-cp", "app.jar", "com.raft.cop.risk.RiskScoringAppKt"]
+ENTRYPOINT ["java", "-cp", "app.jar", "com.jieli.cop.risk.RiskScoringAppKt"]
